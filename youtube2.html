@@ -19,10 +19,13 @@
         }
 
         #topDiv {
-            margin-top: 20px;
+            margin-top: -10px;
             display: flex;
             width: 100%;
-            height: 50px;
+            height: 80px;
+            z-index: 1000px;
+            position: fixed;
+            background-color: white;
 
 
         }
@@ -73,7 +76,7 @@
             <img src="https://wpclipart.com/dl.php?img=/camera/video/video_camera_handheld_T.png" />
             <img src="https://th.bing.com/th/id/OIP.X4rE52zB2Oe42Zw7TOfJRgHaHa?w=181&h=181&c=7&o=5&pid=1.7" />
             <img style="border-radius: 50%;"
-                src="https://th.bing.com/th/id/OIP.l1QqbxVaBFc6CLLZi7tJbwHaNv?w=115&h=183&c=7&o=5&pid=1.7" />
+                src="https://th.bing.com/th?q=Ben+Ten+Symbol&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-IN&adlt=moderate&t=1&mw=247" />
         </div>
     </div>
     <hr style="border: 1px solid grey;">
@@ -89,7 +92,7 @@
      async function defaultVideos() {
             var search = document.getElementById("search").value
             try {
-                let res = await fetch('https://youtube.googleapis.com/youtube/v3/videos?maxResults=20&part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyB6YXIIgnNfK_5OuvgDU3afi4FV4uVGOCA')
+                let res = await fetch('https://youtube.googleapis.com/youtube/v3/videos?maxResults=20&part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=in&key=AIzaSyB6YXIIgnNfK_5OuvgDU3afi4FV4uVGOCA')
                var { items } = await res.json();
                 console.log("items:", items)
                items = items.filter(({ id }) => { return id != undefined })
@@ -104,7 +107,7 @@
                 
             parent.innerHTML = null
                 for(i=0;i<videos.length;i++){
-                    console.log(videos[i])
+                    console.log(videos[i].id)
                     let div = document.createElement('div')
                     
                    
